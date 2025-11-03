@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriVerse 🌾</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">🌾 AgriVerse</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#predictor">Crop Predictor</a></li>
+      <li><a href="#weather">Weather</a></li>
+      <li><a href="#market">Market Prices</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <button class="cta">Get Started</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <p class="tagline">⚡ AI-Powered Agricultural Intelligence</p>
+      <h1>Empowering Farmers with <span>Smart Agriculture</span></h1>
+      <p class="desc">
+        Make data-driven decisions with AI-powered crop predictions, real-time weather forecasts,
+        pest detection, and market insights — all in one unified platform.
+      </p>
+      <div class="buttons">
+        <button class="primary-btn">Start Farming Smarter →</button>
+        <button class="secondary-btn">Watch Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stat">
+      <h2 class="counter" data-target="5000">0</h2>
+      <p>Farmers Empowered</p>
+    </div>
+    <div class="stat">
+      <h2 class="counter" data-target="12000">0</h2>
+      <p>Crops Predicted</p>
+    </div>
+    <div class="stat">
+      <h2 class="counter" data-target="48">0</h2>
+      <p>Regions Covered</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-text">
+      <h2>About <span>AgriVerse</span></h2>
+      <p>
+        AgriVerse connects farmers, weather data, and experts through a unified AI system.
+        Our mission is to empower agriculture with smart tools that enhance productivity,
+        reduce risks, and improve sustainability.
+      </p>
+    </div>
+    <img src="{{ url_for('static', filename='icon/a.jpg') }}" alt="Smart Farming" class="about-img" />
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>🚀 Key Features</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <img src="{{ url_for('static', filename='icon/ai.png') }}" alt="AI Crop" />
+        <h3>AI Crop Prediction</h3>
+        <p>Predict the best crop to plant using AI and soil insights.</p>
+      </div>
+      <div class="feature-box">
+        <img src="{{ url_for('static', filename='icon/weather.png') }}" alt="Weather" />
+        <h3>Weather Forecast</h3>
+        <p>Get accurate, real-time weather updates for your region.</p>
+      </div>
+      <div class="feature-box">
+        <img src="{{ url_for('static', filename='icon/market.png') }}" alt="Market" />
+        <h3>Market Insights</h3>
+        <p>Stay updated with live market prices to maximize profits.</p>
+      </div>
+      <div class="feature-box">
+        <img src="{{ url_for('static', filename='icon/community.png') }}" alt="Community" />
+        <h3>Community Support</h3>
+        <p>Connect with other farmers and share real experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Weather Section -->
+  <section id="weather" class="weather-section">
+    <h2>☀️ Live Weather Update</h2>
+    <input type="text" id="cityInput" placeholder="Enter city name...">
+    <button id="getWeatherBtn">Get Weather</button>
+    <div id="weatherResult"></div>
+  </section>
+
+  <!-- Video -->
+  <section class="video-section">
+    <h2>🎥 Watch How AgriVerse Works</h2>
+    <div class="video-container">
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/ZwT0Jt7l5yI"
+        title="AgriVerse Demo"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>🌟 What Farmers Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">"AgriVerse helped me choose the right crop for my soil. My yield increased by 40%!" — <b>Ramesh (Maharashtra)</b></div>
+      <div class="testimonial">"The weather alerts are so accurate — I never miss irrigation schedules now!" — <b>Lakshmi (Tamil Nadu)</b></div>
+      <div class="testimonial">"It’s like having an AI farming assistant. Truly revolutionary." — <b>Harpreet (Punjab)</b></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact">
+    <h2>📩 Get in Touch</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <h3>🌾 AgriVerse</h3>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <p class="copy">© 2025 AgriVerse. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Chatbot -->
+  <button class="chatbot-btn">💬</button>
+
+  <script>
+    // Scroll Reveal Animation
+    ScrollReveal().reveal('.about, .features, .video-section, .testimonials, .contact', {
+      delay: 200,
+      distance: '60px',
+      origin: 'bottom',
+      duration: 1000
+    });
+
+    // Animated Counter
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const update = () => {
+        const target = +counter.getAttribute('data-target');
+        const c = +counter.innerText;
+        const increment = target / 150;
+        if (c < target) {
+          counter.innerText = Math.ceil(c + increment);
+          setTimeout(update, 10);
+        } else counter.innerText = target;
+      };
+      update();
+    });
+
+    // Live Weather Fetch
+    document.getElementById('getWeatherBtn').addEventListener('click', async () => {
+      const city = document.getElementById('cityInput').value;
+      const apiKey = 'YOUR_OPENWEATHER_API_KEY'; // replace with your key
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+      const data = await res.json();
+      if (data.cod === 200)
+        document.getElementById('weatherResult').innerHTML =
+          `<h3>${data.name}</h3><p>🌡️ ${data.main.temp}°C | ${data.weather[0].description}</p>`;
+      else document.getElementById('weatherResult').innerText = 'City not found!';
+    });
+  </script>
+</body>
+</html>
