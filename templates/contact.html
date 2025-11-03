@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | AgriVerse</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #eaf6ff, #b3e0ff);
+      color: #002855;
+      padding-top: 80px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact-section h1 {
+      font-size: 2.5rem;
+      color: #003366;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .contact-section p {
+      color: #004080;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .contact-form,
+    .contact-info {
+      flex: 1;
+      min-width: 320px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .contact-form:hover,
+    .contact-info:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background: #f5fbff;
+      font-size: 1rem;
+      color: #003366;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid #0077b6;
+    }
+
+    .contact-form button {
+      width: 100%;
+      background-color: #0077b6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #005f8a;
+      transform: scale(1.03);
+    }
+
+    .contact-info h2 {
+      color: #004080;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .contact-info p {
+      color: #003366;
+      margin: 8px 0;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .map {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .contact-section h1 {
+        font-size: 2rem;
+      }
+
+      .contact-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Include Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>📩 Get in Touch</h1>
+    <p>We’d love to hear from you! Fill out the form or contact us directly for support, feedback, or collaborations.</p>
+
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form action="#" method="post">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>📍 Our Office</h2>
+        <p><b>Address:</b> AgriVerse HQ, Pune, Maharashtra, India</p>
+        <p><b>Phone:</b> +91 98765 43210</p>
+        <p><b>Email:</b> support@agriverse.com</p>
+        <p><b>Hours:</b> Mon–Fri: 9 AM – 6 PM</p>
+
+        <div class="map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.123456789!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c09b1234567%3A0x9876543210abcdef!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1610000000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -12,13 +12,14 @@
   <nav class="navbar">
     <div class="logo">🌾 AgriVerse</div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#predictor">Crop Predictor</a></li>
-      <li><a href="#weather">Weather</a></li>
-      <li><a href="#market">Market Prices</a></li>
-      <li><a href="#community">Community</a></li>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('crop') }}">Crop Predictor</a></li>
+      <li><a href="{{ url_for('weather') }}">Weather</a></li>
+      <li><a href="{{ url_for('market') }}">Market Prices</a></li>
+      <li><a href="{{ url_for('community') }}">Community</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
     </ul>
-    <button class="cta">Get Started</button>
+    <a href="{{ url_for('crop') }}"><button class="cta">Get Started</button></a>
   </nav>
 
   <!-- Hero Section -->
@@ -32,7 +33,7 @@
         pest detection, and market insights — all in one unified platform.
       </p>
       <div class="buttons">
-        <button class="primary-btn">Start Farming Smarter →</button>
+        <a href="{{ url_for('crop') }}"><button class="primary-btn">Start Farming Smarter →</button></a>
         <button class="secondary-btn">Watch Demo</button>
       </div>
     </div>
@@ -63,6 +64,7 @@
         Our mission is to empower agriculture with smart tools that enhance productivity,
         reduce risks, and improve sustainability.
       </p>
+      <a href="{{ url_for('community') }}"><button class="primary-btn">Join Our Community</button></a>
     </div>
     <img src="{{ url_for('static', filename='icon/a.jpg') }}" alt="Smart Farming" class="about-img" />
   </section>
@@ -73,33 +75,25 @@
     <div class="feature-grid">
       <div class="feature-box">
         <img src="{{ url_for('static', filename='icon/ai.png') }}" alt="AI Crop" />
-        <h3>AI Crop Prediction</h3>
+        <h3><a href="{{ url_for('crop') }}">AI Crop Prediction</a></h3>
         <p>Predict the best crop to plant using AI and soil insights.</p>
       </div>
       <div class="feature-box">
         <img src="{{ url_for('static', filename='icon/weather.png') }}" alt="Weather" />
-        <h3>Weather Forecast</h3>
+        <h3><a href="{{ url_for('weather') }}">Weather Forecast</a></h3>
         <p>Get accurate, real-time weather updates for your region.</p>
       </div>
       <div class="feature-box">
         <img src="{{ url_for('static', filename='icon/market.png') }}" alt="Market" />
-        <h3>Market Insights</h3>
+        <h3><a href="{{ url_for('market') }}">Market Insights</a></h3>
         <p>Stay updated with live market prices to maximize profits.</p>
       </div>
       <div class="feature-box">
         <img src="{{ url_for('static', filename='icon/community.png') }}" alt="Community" />
-        <h3>Community Support</h3>
+        <h3><a href="{{ url_for('community') }}">Community Support</a></h3>
         <p>Connect with other farmers and share real experiences.</p>
       </div>
     </div>
-  </section>
-
-  <!-- Live Weather Section -->
-  <section id="weather" class="weather-section">
-    <h2>☀️ Live Weather Update</h2>
-    <input type="text" id="cityInput" placeholder="Enter city name...">
-    <button id="getWeatherBtn">Get Weather</button>
-    <div id="weatherResult"></div>
   </section>
 
   <!-- Video -->
@@ -128,7 +122,7 @@
   <!-- Contact -->
   <section class="contact">
     <h2>📩 Get in Touch</h2>
-    <form id="contactForm">
+    <form id="contactForm" action="{{ url_for('contact') }}" method="get">
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Email" required>
       <textarea placeholder="Your Message" rows="4"></textarea>
@@ -141,16 +135,16 @@
     <div class="footer-content">
       <h3>🌾 AgriVerse</h3>
       <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('community') }}">Community</a></li>
       </ul>
       <p class="copy">© 2025 AgriVerse. All Rights Reserved.</p>
     </div>
   </footer>
 
   <!-- Floating Chatbot -->
-  <button class="chatbot-btn">💬</button>
+  <a href="{{ url_for('community') }}"><button class="chatbot-btn">💬</button></a>
 
   <script>
     // Scroll Reveal Animation
@@ -174,18 +168,6 @@
         } else counter.innerText = target;
       };
       update();
-    });
-
-    // Live Weather Fetch
-    document.getElementById('getWeatherBtn').addEventListener('click', async () => {
-      const city = document.getElementById('cityInput').value;
-      const apiKey = 'YOUR_OPENWEATHER_API_KEY'; // replace with your key
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-      const data = await res.json();
-      if (data.cod === 200)
-        document.getElementById('weatherResult').innerHTML =
-          `<h3>${data.name}</h3><p>🌡️ ${data.main.temp}°C | ${data.weather[0].description}</p>`;
-      else document.getElementById('weatherResult').innerText = 'City not found!';
     });
   </script>
 </body>

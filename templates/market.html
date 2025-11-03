@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Prices | AgriVerse</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff5e1, #ffe0b3);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      color: #3b2f2f;
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .container h1 {
+      font-size: 2.4rem;
+      color: #4b2e05;
+      margin-bottom: 15px;
+    }
+
+    .container p {
+      color: #704214;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .market-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fffaf3;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .market-table th, .market-table td {
+      padding: 14px;
+      text-align: center;
+    }
+
+    .market-table th {
+      background: #ffb347;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .market-table tr:nth-child(even) {
+      background: #fff2cc;
+    }
+
+    .market-table tr:hover {
+      background: #ffe8b3;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container">
+    <h1>🛒 Current Market Prices</h1>
+    <p>Stay updated with daily crop market rates across major regions.</p>
+
+    <table class="market-table">
+      <thead>
+        <tr>
+          <th>Crop</th>
+          <th>Location</th>
+          <th>Price (₹/Quintal)</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wheat</td>
+          <td>Pune</td>
+          <td>₹2,450</td>
+          <td>Today</td>
+        </tr>
+        <tr>
+          <td>Soybean</td>
+          <td>Nagpur</td>
+          <td>₹4,250</td>
+          <td>Today</td>
+        </tr>
+        <tr>
+          <td>Rice</td>
+          <td>Nashik</td>
+          <td>₹3,100</td>
+          <td>Today</td>
+        </tr>
+        <tr>
+          <td>Cotton</td>
+          <td>Kolhapur</td>
+          <td>₹5,800</td>
+          <td>Today</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

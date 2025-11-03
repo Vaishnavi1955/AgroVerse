@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather | AgriVerse</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Background and Global Style */
+    body {
+      background: linear-gradient(135deg, #dceefb, #b3e0ff);
+      font-family: 'Poppins', sans-serif;
+      color: #003366;
+      margin: 0;
+      padding-top: 80px; /* Navbar offset */
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .container h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #002855;
+    }
+
+    .container p {
+      color: #004080;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    /* Weather Card Layout */
+    .weather-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .weather-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 25px 20px;
+      width: 280px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .weather-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .weather-card img {
+      width: 85px;
+      height: 85px;
+      margin-bottom: 15px;
+    }
+
+    .weather-card h2 {
+      font-size: 1.4rem;
+      color: #00509e;
+      margin-bottom: 10px;
+    }
+
+    .weather-card p {
+      margin: 5px 0;
+      color: #003366;
+      font-size: 0.95rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .container h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .weather-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+      .weather-card {
+        width: 85%;
+        padding: 30px 25px;
+      }
+      .container p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 40px 15px;
+      }
+      .container h1 {
+        font-size: 1.7rem;
+      }
+      .weather-card {
+        width: 95%;
+        padding: 25px 20px;
+      }
+      .weather-card img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Include Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- Weather Section -->
+  <div class="container">
+    <h1>🌤 Real-Time Weather Updates</h1>
+    <p>Stay updated with the latest weather insights to plan your farming better!</p>
+
+    <div class="weather-section">
+      <div class="weather-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Sunny">
+        <h2>Pune</h2>
+        <p>🌡 Temperature: 29°C</p>
+        <p>💧 Humidity: 58%</p>
+        <p>💨 Wind: 11 km/h</p>
+      </div>
+
+      <div class="weather-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4150/4150897.png" alt="Rainy">
+        <h2>Nashik</h2>
+        <p>🌡 Temperature: 23°C</p>
+        <p>💧 Humidity: 82%</p>
+        <p>🌧 Condition: Light Rain</p>
+      </div>
+
+      <div class="weather-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2930/2930012.png" alt="Cloudy">
+        <h2>Nagpur</h2>
+        <p>🌡 Temperature: 27°C</p>
+        <p>💧 Humidity: 65%</p>
+        <p>☁ Condition: Cloudy</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
