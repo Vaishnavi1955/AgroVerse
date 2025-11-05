@@ -6,158 +6,271 @@
   <title>Community | AgriVerse</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <style>
-    /* Background and Layout */
     body {
-      background: linear-gradient(135deg, #eaf6ff, #b3e0ff);
-      color: #003366;
-      font-family: 'Poppins', sans-serif;
       margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e8faff, #c2f0c2);
+      color: #1b4332;
       padding-top: 80px;
     }
 
     .community-container {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      backdrop-filter: blur(10px);
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
     }
 
     h1 {
       text-align: center;
-      color: #00509e;
-      font-weight: 700;
-      font-size: 2.3rem;
-      margin-bottom: 30px;
+      font-size: 2.5rem;
+      color: #2d6a4f;
+      margin-bottom: 10px;
     }
 
-    /* Post Form */
-    .post-form {
-      background: linear-gradient(135deg, #90e0ef, #caf0f8);
-      padding: 25px;
-      border-radius: 16px;
+    p.subtitle {
+      text-align: center;
+      color: #1b4332;
       margin-bottom: 40px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
     }
 
-    .post-form h3 {
+    /* Post creation box */
+    .create-post {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      backdrop-filter: blur(8px);
+    }
+
+    .create-post h2 {
+      color: #2d6a4f;
+      font-size: 1.5rem;
       margin-bottom: 15px;
-      color: #003366;
     }
 
-    .post-form input,
-    .post-form textarea {
+    textarea {
       width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: none;
+      padding: 15px;
       border-radius: 10px;
-      background: #fff;
+      border: 1px solid #b7e4c7;
       font-size: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      resize: none;
+      background-color: #f8fff9;
+      margin-bottom: 15px;
+      transition: all 0.2s;
     }
 
-    .post-form button {
-      background: #0077b6;
+    textarea:focus {
+      outline: none;
+      border-color: #40916c;
+      box-shadow: 0 0 8px rgba(64, 145, 108, 0.3);
+    }
+
+    button {
+      background: linear-gradient(90deg, #2d6a4f, #52b788);
       color: white;
       border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 8px;
       font-size: 1rem;
-      font-weight: 600;
       cursor: pointer;
+      font-weight: 600;
       transition: all 0.3s ease;
-      display: inline-block;
     }
 
-    .post-form button:hover {
-      background: #0096c7;
-      transform: scale(1.05);
+    button:hover {
+      background: linear-gradient(90deg, #1b4332, #40916c);
+      transform: translateY(-2px);
     }
 
-    /* Posts Section */
+    /* Posts grid */
     .posts {
-      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
     }
 
-    .post {
-      background: linear-gradient(135deg, #ffffff, #e3f2fd);
+    .post-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
       padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      width: 320px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .post:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    .post-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
     }
 
-    .post h3 {
-      color: #023e8a;
-      margin-bottom: 6px;
+    .post-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
     }
 
-    .post p {
-      color: #333;
+    .post-header img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+
+    .post-header h3 {
+      font-size: 1.1rem;
+      margin: 0;
+      color: #2d6a4f;
+    }
+
+    .post-header p {
+      font-size: 0.85rem;
+      color: #4f772d;
+      margin: 2px 0 0 0;
+    }
+
+    .post-content {
+      font-size: 1rem;
+      color: #1b4332;
       line-height: 1.5;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .post small {
-      color: #555;
-      font-style: italic;
+    .like-btn {
+      display: inline-block;
+      background-color: #b7e4c7;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #1b4332;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .like-btn:hover {
+      background-color: #74c69d;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #d8f3dc;
+      color: #1b4332;
+      margin-top: 60px;
+      font-size: 14px;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .community-container {
-        padding: 20px;
-      }
       h1 {
         font-size: 1.8rem;
+      }
+
+      .post-card {
+        width: 85%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .create-post, .post-card {
+        width: 100%;
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   {% include 'navbar.html' %}
 
   <div class="community-container">
-    <h1>🌾 Farmer Community Forum</h1>
+    <h1>👩‍🌾 AgriVerse Community</h1>
+    <p class="subtitle">Connect, share, and learn from fellow farmers and agricultural experts!</p>
 
-    <div class="post-form">
-      <h3>Share Your Query or Experience</h3>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <textarea rows="4" placeholder="Write your post here..." required></textarea>
+    <!-- Post Creation Section -->
+    <div class="create-post">
+      <h2>Share Your Experience 🌿</h2>
+      <form id="postForm" onsubmit="return addPost(event)">
+        <textarea id="postContent" rows="4" placeholder="Share your farming story or ask a question..." required></textarea>
         <button type="submit">Post</button>
       </form>
     </div>
 
-    <div class="posts">
-      <div class="post">
-        <h3>Rahul Patil</h3>
-        <p>Does anyone know the best fertilizer for wheat in dry soil conditions?</p>
-        <small>2 hours ago</small>
+    <!-- Posts Display -->
+    <div class="posts" id="postList">
+      <div class="post-card">
+        <div class="post-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="User">
+          <div>
+            <h3>Ravi Patil</h3>
+            <p>Farmer, Maharashtra</p>
+          </div>
+        </div>
+        <div class="post-content">
+          I recently tried drip irrigation on my tomato farm 🌱 — saved 30% water and improved yield! Highly recommend!
+        </div>
+        <div class="like-btn" onclick="likePost(this)">👍 Like <span>12</span></div>
       </div>
 
-      <div class="post">
-        <h3>Anita Deshmukh</h3>
-        <p>I tried organic compost this season, and the yield improved significantly!</p>
-        <small>5 hours ago</small>
-      </div>
-
-      <div class="post">
-        <h3>Sunil Kumar</h3>
-        <p>Rain prediction helped me plan irrigation efficiently. Thanks AgriVerse!</p>
-        <small>1 day ago</small>
+      <div class="post-card">
+        <div class="post-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="User">
+          <div>
+            <h3>Priya Singh</h3>
+            <p>Agri Consultant</p>
+          </div>
+        </div>
+        <div class="post-content">
+          For those facing pest issues in rice, try using neem-based organic sprays 🌾. It’s safe and effective!
+        </div>
+        <div class="like-btn" onclick="likePost(this)">👍 Like <span>8</span></div>
       </div>
     </div>
   </div>
+
+  <footer>
+    © 2025 AgriVerse | Empowering Farmers Together 🌱
+  </footer>
+
+  <script>
+    function addPost(event) {
+      event.preventDefault();
+      const content = document.getElementById("postContent").value.trim();
+      if (!content) return;
+
+      const newPost = document.createElement("div");
+      newPost.className = "post-card";
+      newPost.innerHTML = `
+        <div class="post-header">
+          <img src="https://cdn-icons-png.flaticon.com/512/2922/2922515.png" alt="User">
+          <div>
+            <h3>Guest User</h3>
+            <p>Community Member</p>
+          </div>
+        </div>
+        <div class="post-content">${content}</div>
+        <div class="like-btn" onclick="likePost(this)">👍 Like <span>0</span></div>
+      `;
+
+      document.getElementById("postList").prepend(newPost);
+      document.getElementById("postForm").reset();
+    }
+
+    function likePost(button) {
+      const span = button.querySelector("span");
+      span.textContent = parseInt(span.textContent) + 1;
+      button.style.backgroundColor = "#52b788";
+      button.style.color = "white";
+    }
+  </script>
 </body>
 </html>
